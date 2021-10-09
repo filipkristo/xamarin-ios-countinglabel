@@ -49,7 +49,7 @@ namespace CountingLabel.iOS
             _lastUpdate = NSDate.Now.SecondsSinceReferenceDate;
 
             _timer = CADisplayLink.Create(UpdateValue);
-            _timer.PreferredFrameRateRange = new CAFrameRateRange(10, 10, 10);
+            //_timer.PreferredFrameRateRange = new CAFrameRateRange(10, 10, 10);
             _timer.AddToRunLoop(NSRunLoop.Main, NSRunLoopMode.Default);
             _timer.AddToRunLoop(NSRunLoop.Main, NSRunLoopMode.UITracking);
         }
