@@ -65,6 +65,11 @@ namespace CountingLabel.iOS
             _timer.AddToRunLoop(NSRunLoop.Main, NSRunLoopMode.UITracking);
         }
 
+        public void Cancel()
+        {
+            _timer?.Invalidate();
+        }
+
         private void UpdateValue()
         {
             var now = (nfloat)NSDate.Now.SecondsSinceReferenceDate;

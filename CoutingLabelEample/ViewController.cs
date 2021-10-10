@@ -7,6 +7,7 @@ namespace CoutingLabelEample
     public partial class ViewController : UIViewController
     {
         private readonly UICountingLabel _label;
+        private readonly UILabel _header;
         private readonly UIButton _button;
 
         public ViewController(IntPtr handle) : base(handle)
@@ -19,7 +20,16 @@ namespace CoutingLabelEample
             };
             _label.ExecutionCompleted += _label_ExecutionCompleted;
 
-            _button = new UIButton();
+            _header = new UILabel
+            {
+                Text = "Counting label demo",
+                TextAlignment = UITextAlignment.Center,
+                Font = UIFont.PreferredTitle1
+            };
+
+            _button = UIButton.FromType(UIButtonType.RoundedRect);
+            _button.BackgroundColor = UIColor.Green;
+            _button.Layer.CornerRadius = 5f;
             _button.SetTitle("Count", UIControlState.Normal);
             _button.SetTitleColor(UIColor.Blue, UIControlState.Normal);
             _button.TouchUpInside += _button_TouchUpInside;
@@ -44,6 +54,10 @@ namespace CoutingLabelEample
             {
                 _label.CountFrom(0, 360, 3, CountingLabel.iOS.Enums.TimingFunction.EasyIn);
             }));
+            controller.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, (_) =>
+            {
+                controller.DismissViewController(true, null);
+            }));
 
             PresentViewController(controller, true, null);
         }
@@ -62,14 +76,16 @@ namespace CoutingLabelEample
 
             View.BackgroundColor = UIColor.White;
 
+            View.AddSubview(_header);
             View.AddSubview(_label);
             View.AddSubview(_button);
 
             var viewWidth = View.Bounds.Width;
-            var viewHeight = 31f;
+            var viewHeight = 40f;
 
-            _label.Frame = new CoreGraphics.CGRect(30, 30, 100, 40);
-            _button.Frame = new CoreGraphics.CGRect(30, 80, 100, 40);
+            _header.Frame = new CoreGraphics.CGRect(20, 40, viewWidth - 40, viewHeight);
+            _label.Frame = new CoreGraphics.CGRect(20, 82, viewWidth - 40, viewHeight);
+            _button.Frame = new CoreGraphics.CGRect(20, _label.Frame.Y * 1.6, viewWidth - 40, viewHeight);
         }
     }
 }

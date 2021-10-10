@@ -12,5 +12,7 @@ namespace CountingLabel.iOS.Interfaces
         string StringFormat { get; set; }
 
         event EventHandler<ExecutionCompletedEventArgs> ExecutionCompleted;
+
+        void Cancel();
     }
 }
