@@ -10,5 +10,7 @@ namespace CountingLabel.iOS.Interfaces
         Func<double, string> SetTextDelegate { get; set; }
 
         string StringFormat { get; set; }
+
+        event EventHandler<ExecutionCompletedEventArgs> ExecutionCompleted;
     }
 }

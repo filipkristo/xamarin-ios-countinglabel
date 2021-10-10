@@ -44,12 +44,15 @@
     <Folder Include="Resources\" />
     <Folder Include="Enums\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UICountingLabel.cs" />
     <Compile Include="Enums\TimingFunction.cs" />
     <Compile Include="Interfaces\ICountingLabel.cs" />
+    <Compile Include="ExecutionCompletedEventArgs.cs" />
+    <Compile Include="Helpers\CADisplayLinkHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

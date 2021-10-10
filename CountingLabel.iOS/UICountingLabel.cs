@@ -2,6 +2,7 @@
 using System.Globalization;
 using CoreAnimation;
 using CountingLabel.iOS.Enums;
+using CountingLabel.iOS.Helpers;
 using CountingLabel.iOS.Interfaces;
 using Foundation;
 using UIKit;
@@ -23,6 +24,8 @@ namespace CountingLabel.iOS
 
         private TimingFunction _timingFunction;
 
+        public event EventHandler<ExecutionCompletedEventArgs> ExecutionCompleted;
+
         public Func<double, string> SetTextDelegate { get; set; }
 
         public string StringFormat { get; set; }
@@ -37,6 +40,7 @@ namespace CountingLabel.iOS
             {
                 _timer.Invalidate();
                 _timer = null;
+                RaiseExecutionCompletedEvent(true, _progress);
             }
 
             if (duration <= 0)
@@ -49,7 +53,14 @@ namespace CountingLabel.iOS
             _lastUpdate = NSDate.Now.SecondsSinceReferenceDate;
 
             _timer = CADisplayLink.Create(UpdateValue);
-            //_timer.PreferredFrameRateRange = new CAFrameRateRange(10, 10, 10);
+            if (UIDevice.CurrentDevice.CheckSystemVersion(15, 0))
+            {
+                _timer.PreferredFrameRateRange = CADisplayLinkHelpers.GetPreferredFrameRateRange(_startingValue, _destinationValue, _totalTime);
+            }
+            else
+            {
+                _timer.PreferredFramesPerSecond = CADisplayLinkHelpers.GetPreferredFramesPerSecond(_startingValue, _destinationValue, _totalTime);
+            }
             _timer.AddToRunLoop(NSRunLoop.Main, NSRunLoopMode.Default);
             _timer.AddToRunLoop(NSRunLoop.Main, NSRunLoopMode.UITracking);
         }
@@ -65,6 +76,7 @@ namespace CountingLabel.iOS
                 _timer.Invalidate();
                 _timer = null;
                 _progress = _totalTime;
+                RaiseExecutionCompletedEvent(false, _progress);
             }
 
             SetTextValue(CurrentValue());
@@ -136,6 +148,11 @@ namespace CountingLabel.iOS
             {
                 Text = Math.Round(value, 0).ToString();
             }
+        }
+
+        private void RaiseExecutionCompletedEvent(bool isCancelled, double duration)
+        {
+            ExecutionCompleted?.Invoke(this, new ExecutionCompletedEventArgs(isCancelled, duration));
         }
     }
 }
