@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
+    <id>xamarin.ios.countinglabel</id>
+    <version>0.0.1</version>
+    <title>Xamarin iOS Counting Label</title>
+    <authors>Filip Krišto</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>$copyright$</copyright>
-    <tags>Tag1 Tag2</tags>
+    <projectUrl>https://github.com/filipkristo/xamarin-ios-countinglabel</projectUrl>
+    <iconUrl>https://github.com/filipkristo/xamarin-ios-countinglabel</iconUrl>
+    <description>UI Counting Label</description>
+    <releaseNotes>Initial versoin.</releaseNotes>
+    <copyright>© 2021 Filip Krišto</copyright>
+    <tags>Xamarin iOS CountingLabel</tags>
   </metadata>
+  <files>
+
+  </files>
 </package>

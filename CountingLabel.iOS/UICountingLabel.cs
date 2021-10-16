@@ -95,8 +95,7 @@ namespace CountingLabel.iOS
             }
 
             var percent = _progress / _totalTime;
-
-            double updateVal = 0;
+            var updateVal = 0d;
 
             switch (_timingFunction)
             {
@@ -119,8 +118,8 @@ namespace CountingLabel.iOS
 
         private double UpdateEasyInOut(double t)
         {
-            int sign = 1;
-            int r = (int)_counterRate;
+            var sign = 1;
+            var r = (int)_counterRate;
 
             if (r % 2 == 0)
                 sign = -1;

@@ -13,6 +13,19 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>CountingLabel.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>xamarin.ios.countinglabel</PackageId>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>Filip Krišto</Authors>
+    <Copyright>© 2021 Filip Krišto</Copyright>
+    <Owners>Filip Krišto</Owners>
+    <PackageProjectUrl>https://github.com/filipkristo/xamarin-ios-countinglabel</PackageProjectUrl>
+    <PackageReleaseNotes>Initial versoin.</PackageReleaseNotes>
+    <Summary>Xamarin iOS Counting Label</Summary>
+    <PackageTags>Xamarin iOS CountingLabel</PackageTags>
+    <Title>Xamarin iOS Counting Label</Title>
+    <Description>UI Counting Label</Description>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,15 +37,16 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>SdkOnly</MtouchLink>
     <LangVersion>latest</LangVersion>
+    <PackageOutputPath>bin\Debug</PackageOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchLink>SdkOnly</MtouchLink>
     <LangVersion>latest</LangVersion>
+    <PackageOutputPath>bin\Release</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,5 +68,7 @@
     <Compile Include="ExecutionCompletedEventArgs.cs" />
     <Compile Include="Helpers\CADisplayLinkHelpers.cs" />
   </ItemGroup>
+  <ItemGroup>
+</ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
